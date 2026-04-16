@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>EndoTrack - Cuidado Integral para Endometriose</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+  <div class="sidebar" id="sidebar">
+    <div class="user-plan-info" id="userPlanInfo"></div>
+    <button onclick="showSection('home')">Início</button>
+    <button onclick="showSection('registrar')">Registrar Dor</button>
+    <button onclick="showSection('historico')">Histórico</button>
+    <button onclick="showSection('sobre')">Sobre Endometriose</button>
+    <button onclick="showSection('dicas')">Dicas de Cuidados</button>
+    
+    <div class="premium-section">
+      <h4>🌟 Premium</h4>
+      <button onclick="showSection('consultas')" class="premium-btn">Consultas Online</button>
+      <button onclick="showSection('relatorios')" class="premium-btn">Relatórios Avançados</button>
+      <button onclick="showSection('comunidade')" class="premium-btn">Comunidade Exclusiva</button>
+      <button onclick="showSection('premium')" class="premium-btn">Área Premium</button>
+      <button onclick="showSection('professional')" class="premium-btn">Área Profissional</button>
+    </div>
+    
+    <button onclick="showSection('planos')">Planos e Preços</button>
+    <button onclick="showSection('faq')">FAQ</button>
+    <button onclick="toggleChat()">Falar com a IA</button>
+  </div>
+
+  <header>
+    <h1>EndoTrack</h1>
+    <p>Cuidando da sua jornada com empatia, tecnologia e informação.</p>
+    <div id="userInfo" style="position: absolute; right: 20px; top: 20px; color: white;"></div>
+  </header>
+
+  <div class="main" id="login">
+    <div class="login-hero">
+      <div class="login-card">
+        <div class="login-header">
+          <h1>🌸 Bem-vinda ao EndoTrack</h1>
+          <p>Sua jornada de cuidado e acompanhamento começa aqui</p>
+        </div>
+        
+        <div class="login-form">
+          <div class="input-group-modern">
+            <label for="username">Nome de usuário</label>
+            <input type="text" id="username" placeholder="Digite seu nome de usuário">
+          </div>
+          <button onclick="fazerLogin()" class="login-btn">Entrar na Plataforma</button>
+          
+          <div class="login-divider">ou</div>
+          
+          <button onclick="criarContaDemo()" class="demo-btn">Criar Conta Demonstrativa</button>
+        </div>
+        
+        <div class="login-benefits">
+          <div class="benefit-item-login">
+            <span class="benefit-icon">📊</span>
+            <span>Monitoramento inteligente de sintomas</span>
+          </div>
+          <div class="benefit-item-login">
+            <span class="benefit-icon">🤖</span>
+            <span>IA especializada em endometriose</span>
+          </div>
+          <div class="benefit-item-login">
+            <span class="benefit-icon">👩‍⚕️</span>
+            <span>Acesso a especialistas (Premium)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Espaços para anúncios -->
+    <div class="ads-container-login">
+      <div class="ad-space ad-small">
+        <p class="ad-label">Parceiros</p>
+        <div class="ad-content">
+          <h4>Clínica Vida Saudável</h4>
+          <p>Especialistas em saúde da mulher há 20 anos</p>
+          <button class="ad-btn">Agendar</button>
+        </div>
+      </div>
+      
+      <div class="ad-space ad-small">
+        <p class="ad-label">Publicidade</p>
+        <div class="ad-content">
+          <h4>App MindCare</h4>
+          <p>Meditação guiada para alívio da dor</p>
+          <button class="ad-btn">Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main" id="home">
+    <div class="hero-section">
+      <h1>Bem-vinda ao EndoTrack</h1>
+      <p class="subtitle">Sua jornada de cuidado integral para endometriose começa aqui</p>
+    </div>
+
+    <!-- Seção de Status Pessoal -->
+    <div class="personal-dashboard">
+      <h2>Seu Painel Pessoal</h2>
+      <div class="dashboard-cards">
+        <div class="dashboard-card">
+          <div class="dashboard-icon">📈</div>
+          <h3>Registros Recentes</h3>
+          <p id="statusRegistros">Carregando...</p>
+          <button onclick="showSection('registrar')" class="quick-action-btn">Registrar Nova Dor</button>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="dashboard-icon">📊</div>
+          <h3>Análise de Padrões</h3>
+          <p id="statusAnalise">Carregando...</p>
+          <button onclick="showSection('historico')" class="quick-action-btn">Ver Histórico</button>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="dashboard-icon">🤖</div>
+          <h3>Assistente IA</h3>
+          <p>Tire suas dúvidas sobre sintomas e cuidados</p>
+          <button onclick="toggleChat()" class="quick-action-btn">Conversar Agora</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Monitoramento Inteligente</h3>
+        <p>Registre sintomas e visualize padrões através de gráficos avançados</p>
+        <div class="feature-actions">
+          <button onclick="showSection('registrar')" class="feature-action-btn">Registrar Agora</button>
+        </div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>IA Especializada</h3>
+        <p>Assistente virtual com conhecimento específico sobre endometriose</p>
+        <div class="feature-actions">
+          <button onclick="toggleChat()" class="feature-action-btn">Falar com IA</button>
+        </div>
+      </div>
+      
+      <div class="feature-card premium-feature">
+        <div class="feature-icon">👩‍⚕️</div>
+        <h3>Consultas Online <span class="premium-badge">Premium</span></h3>
+        <p>Acesso direto a ginecologistas especializados em endometriose</p>
+        <div class="feature-actions">
+          <button onclick="showSection('consultas')" class="feature-action-btn premium-action">Acessar</button>
+        </div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Informações Confiáveis</h3>
+        <p>Aprenda mais sobre endometriose e dicas de autocuidado</p>
+        <div class="feature-actions">
+          <button onclick="showSection('sobre')" class="feature-action-btn">Ler Mais</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção de Dicas Rápidas -->
+    <div class="quick-tips-section">
+      <h2>Dicas de Hoje</h2>
+      <div class="tips-carousel" id="tipsCarousel">
+        <div class="tip-card-home active">
+          <div class="tip-icon-home">🧘</div>
+          <h4>Pratique Mindfulness</h4>
+          <p>5 minutos de meditação diária podem ajudar no controle da dor crônica</p>
+        </div>
+        
+        <div class="tip-card-home">
+          <div class="tip-icon-home">🍵</div>
+          <h4>Use Calor Local</h4>
+          <p>Compressas quentes na região abdominal podem aliviar cólicas</p>
+        </div>
+        
+        <div class="tip-card-home">
+          <div class="tip-icon-home">💧</div>
+          <h4>Mantenha-se Hidratada</h4>
+          <p>Beber água regularmente ajuda na eliminação de toxinas</p>
+        </div>
+      </div>
+      
+      <button onclick="showSection('dicas')" class="see-more-tips">Ver Todas as Dicas</button>
+    </div>
+
+    <!-- Espaço para anúncio -->
+    <div class="ad-space ad-home">
+      <p class="ad-label">Conteúdo Patrocinado</p>
+      <div class="ad-content">
+        <h4>Clínica Especializada em Endometriose</h4>
+        <p>Tratamento multidisciplinar com as mais modernas técnicas cirúrgicas</p>
+        <button class="ad-btn">Saiba mais</button>
+      </div>
+    </div>
+
+    <div class="mission-statement">
+      <h2>Nossa Missão</h2>
+      <p>O EndoTrack foi criado para dar suporte às pessoas que convivem com a endometriose. Através de tecnologia simples e acessível, oferecemos um espaço seguro para acompanhar sintomas, registrar dores e buscar orientação inicial.</p>
+      <p>Nosso compromisso vai além do cuidado físico: queremos garantir que você se sinta acolhida, representada e empoderada. A endometriose é uma condição invisível para muitos, mas aqui, sua dor é levada a sério.</p>
+      
+      <div class="benefits-list">
+        <div class="benefit-item">✅ Registrar sintomas e gerar gráficos de evolução</div>
+        <div class="benefit-item">✅ IA interativa especializada em endometriose</div>
+        <div class="benefit-item">✅ Informações confiáveis e dicas de autocuidado</div>
+        <div class="benefit-item">✅ Interface inclusiva e acessível</div>
+        <div class="benefit-item">✅ Total privacidade nos seus dados</div>
+      </div>
+      
+      <p class="closing-message">🌸 Aqui, você não está sozinha. Estamos com você em cada passo da sua jornada.</p>
+    </div>
+  </div>
+
+  <div class="main hidden" id="registrar">
+    <h2>Registrar Nova Dor</h2>
+    <div class="form-container modern-form">
+      <div class="input-group">
+        <label for="local">Local da dor</label>
+        <input type="text" id="local" placeholder="Ex: abdômen inferior, lombar...">
+      </div>
+
+      <div class="input-group">
+        <label for="intensidade">Intensidade (1 a 10)</label>
+        <input type="range" id="intensidadeRange" min="1" max="10" value="5" oninput="updateIntensidade()">
+        <div class="intensity-display">
+          <span id="intensidadeValue">5</span>/10
+          <div class="intensity-description" id="intensidadeDesc">Moderada</div>
+        </div>
+        <input type="hidden" id="intensidade" value="5">
+      </div>
+
+      <div class="input-group">
+        <label for="descricao">Descrição da dor</label>
+        <textarea id="descricao" placeholder="Como você descreveria essa dor? (ex: latejante, aguda, contínua...)"></textarea>
+      </div>
+
+      <button onclick="registrarDor()" class="primary-btn">Salvar Registro</button>
+    </div>
+  </div>
+
+  <div class="main hidden" id="sobre">
+    <div class="info-section">
+      <h2>Sobre a Endometriose</h2>
+      <div class="info-card">
+        <h3>O que é?</h3>
+        <p>A endometriose é uma condição crônica que afeta principalmente mulheres e pessoas com útero em idade fértil. Ocorre quando o tecido semelhante ao endométrio cresce fora do útero, causando inflamação, dor e, em alguns casos, infertilidade.</p>
+      </div>
+      
+      <div class="info-card">
+        <h3>Sintomas Comuns</h3>
+        <ul>
+          <li>Dor pélvica crônica</li>
+          <li>Cólicas menstruais intensas</li>
+          <li>Dor durante relações sexuais</li>
+          <li>Alterações intestinais durante o período menstrual</li>
+          <li>Fadiga extrema</li>
+        </ul>
+      </div>
+      
+      <div class="info-card">
+        <h3>Importância do Diagnóstico</h3>
+        <p>O diagnóstico precoce e o acompanhamento médico são essenciais para o controle dos sintomas e melhoria da qualidade de vida.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="historico">
+    <h2>Histórico de Dores</h2>
+    <div class="chart-container">
+      <canvas id="graficoIntensidade"></canvas>
+    </div>
+    
+    <!-- Anúncio no meio da página -->
+    <div class="ad-space ad-middle">
+      <p class="ad-label">Recomendado</p>
+      <div class="ad-content">
+        <h4>Almofada Térmica ThermaComfort</h4>
+        <p>Alívio instantâneo para cólicas e dores abdominais</p>
+        <button class="ad-btn">Ver ofertas</button>
+      </div>
+    </div>
+    
+    <div id="historico" class="historico-container"></div>
+    
+    <!-- Espaço para anúncio -->
+    <div class="ad-space ad-sidebar">
+      <p class="ad-label">Publicidade</p>
+      <div class="ad-content">
+        <h4>App de Meditação GuiaMental</h4>
+        <p>Técnicas de mindfulness para alívio da dor crônica</p>
+        <button class="ad-btn">Download grátis</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="dicas">
+    <h2>Dicas de Cuidados</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🧘</div>
+        <h3>Relaxamento</h3>
+        <p>Pratique técnicas de relaxamento, como ioga ou meditação para reduzir o estresse</p>
+      </div>
+      
+      <div class="tip-card">
+        <div class="tip-icon">🍵</div>
+        <h3>Calor Local</h3>
+        <p>Use compressas quentes para aliviar dores abdominais e cólicas</p>
+      </div>
+      
+      <div class="tip-card">
+        <div class="tip-icon">🥦</div>
+        <h3>Alimentação</h3>
+        <p>Mantenha uma dieta anti-inflamatória rica em vegetais e ômega-3</p>
+      </div>
+      
+      <div class="tip-card">
+        <div class="tip-icon">💧</div>
+        <h3>Hidratação</h3>
+        <p>Beba bastante água para ajudar na eliminação de toxinas</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="lembretes">
+    <h2>Lembretes de Medicação</h2>
+    <div class="form-container modern-form">
+      <div class="input-group">
+        <label for="medicacao">Medicação</label>
+        <input type="text" id="medicacao" placeholder="Nome do medicamento">
+      </div>
+      
+      <div class="input-group">
+        <label for="horario">Horário</label>
+        <input type="time" id="horario">
+      </div>
+      
+      <button onclick="adicionarLembrete()" class="primary-btn">Adicionar Lembrete</button>
+    </div>
+    <div id="lembretes" class="lembretes-container"></div>
+  </div>
+
+  <!-- Seções Premium -->
+  <div class="main hidden" id="consultas">
+    <div class="premium-header">
+      <h2>Consultas Online <span class="premium-badge">Premium</span></h2>
+    </div>
+    
+    <div id="consultasContent">
+      <div class="upgrade-prompt">
+        <div class="upgrade-icon">🔒</div>
+        <h3>Acesso Premium Necessário</h3>
+        <p>Tenha acesso a consultas com ginecologistas especializados em endometriose</p>
+        <button onclick="showSection('planos')" class="upgrade-btn">Fazer Upgrade</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="relatorios">
+    <div class="premium-header">
+      <h2>Relatórios Avançados <span class="premium-badge">Premium</span></h2>
+    </div>
+    
+    <div id="relatoriosContent">
+      <div class="upgrade-prompt">
+        <div class="upgrade-icon">📊</div>
+        <h3>Análises Detalhadas</h3>
+        <p>Relatórios personalizados com análise de padrões e tendências dos seus sintomas</p>
+        <button onclick="showSection('planos')" class="upgrade-btn">Fazer Upgrade</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="comunidade">
+    <div class="premium-header">
+      <h2>Comunidade Exclusiva <span class="premium-badge">Premium</span></h2>
+    </div>
+    
+    <div id="comunidadeContent">
+      <div class="upgrade-prompt">
+        <div class="upgrade-icon">👥</div>
+        <h3>Conecte-se com Outras Pessoas</h3>
+        <p>Participe de uma comunidade de apoio com moderação especializada</p>
+        <button onclick="showSection('planos')" class="upgrade-btn">Fazer Upgrade</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Novas Seções de Planos Específicos -->
+  <div class="main hidden" id="premium">
+    <div class="plan-details-header">
+      <h1>Plano Premium</h1>
+      <p>Recursos avançados para um cuidado mais completo</p>
+    </div>
+    
+    <div class="plan-features-grid">
+      <div class="feature-detail-card">
+        <div class="feature-detail-icon">👩‍⚕️</div>
+        <h3>Consultas Especializadas</h3>
+        <p>Acesso a ginecologistas especialistas em endometriose</p>
+        <ul>
+          <li>• Até 3 consultas por mês</li>
+          <li>• Agendamento flexível</li>
+          <li>• Histórico médico integrado</li>
+          <li>• Receitas digitais</li>
+        </ul>
+        <button onclick="agendarConsulta()" class="feature-btn">Agendar Consulta</button>
+      </div>
+      
+      <div class="feature-detail-card">
+        <div class="feature-detail-icon">📊</div>
+        <h3>Relatórios Avançados</h3>
+        <p>Análises detalhadas dos seus sintomas e evolução</p>
+        <ul>
+          <li>• Gráficos personalizados</li>
+          <li>• Relatórios médicos em PDF</li>
+          <li>• Análise de padrões</li>
+          <li>• Exportação de dados</li>
+        </ul>
+        <button onclick="gerarRelatorio()" class="feature-btn">Gerar Relatório</button>
+      </div>
+      
+      <div class="feature-detail-card">
+        <div class="feature-detail-icon">👥</div>
+        <h3>Comunidade Exclusiva</h3>
+        <p>Conecte-se com outras pessoas em um ambiente seguro</p>
+        <ul>
+          <li>• Grupos temáticos moderados</li>
+          <li>• Sessions ao vivo com especialistas</li>
+          <li>• Biblioteca de recursos</li>
+          <li>• Suporte 24/7</li>
+        </ul>
+        <button onclick="acessarComunidade()" class="feature-btn">Entrar na Comunidade</button>
+      </div>
+    </div>
+    
+    <!-- Anúncio específico para Premium -->
+    <div class="ad-space ad-premium">
+      <p class="ad-label">Parceiro Premium</p>
+      <div class="ad-content">
+        <h4>Instituto de Pesquisa EndoLife</h4>
+        <p>Participe de estudos clínicos e contribua para o avanço da medicina</p>
+        <button class="ad-btn">Participar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="professional">
+    <div class="plan-details-header professional-header">
+      <h1>Plano Profissional</h1>
+      <p>O mais completo acompanhamento médico disponível</p>
+    </div>
+    
+    <div class="plan-features-grid">
+      <div class="feature-detail-card professional-card">
+        <div class="feature-detail-icon">🏥</div>
+        <h3>Equipe Multidisciplinar</h3>
+        <p>Acesso a uma equipe completa de especialistas</p>
+        <ul>
+          <li>• Ginecologista, psicólogo e nutricionista</li>
+          <li>• Consultas ilimitadas</li>
+          <li>• Plano de tratamento personalizado</li>
+          <li>• Acompanhamento 24/7</li>
+        </ul>
+        <button onclick="montarEquipe()" class="feature-btn professional-btn">Montar Equipe</button>
+      </div>
+      
+      <div class="feature-detail-card professional-card">
+        <div class="feature-detail-icon">🔬</div>
+        <h3>Análises Avançadas</h3>
+        <p>Exames laboratoriais e análises especializadas</p>
+        <ul>
+          <li>• Análises hormonais mensais</li>
+          <li>• Exames de imagem prioritários</li>
+          <li>• Interpretação especializada</li>
+          <li>• Monitoramento contínuo</li>
+        </ul>
+        <button onclick="solicitarExame()" class="feature-btn professional-btn">Solicitar Exame</button>
+      </div>
+      
+      <div class="feature-detail-card professional-card">
+        <div class="feature-detail-icon">🌍</div>
+        <h3>Rede Internacional</h3>
+        <p>Acesso a especialistas ao redor do mundo</p>
+        <ul>
+          <li>• Consultas com especialistas internacionais</li>
+          <li>• Segunda opinião médica</li>
+          <li>• Acesso a tratamentos experimentais</li>
+          <li>• Telemedicina global</li>
+        </ul>
+        <button onclick="conectarInternacional()" class="feature-btn professional-btn">Conectar Globalmente</button>
+      </div>
+    </div>
+    
+    <!-- Anúncio específico para Profissional -->
+    <div class="ad-space ad-professional">
+      <p class="ad-label">Parceiro Exclusivo</p>
+      <div class="ad-content">
+        <h4>Hospital São Rafael - Centro de Excelência</h4>
+        <p>Tratamentos de última geração com acesso preferencial</p>
+        <button class="ad-btn">Conhecer Hospital</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="planos">
+    <h2>Planos e Preços</h2>
+    <div class="plans-container">
+      <div class="plan-card free-plan">
+        <div class="plan-header">
+          <h3>Gratuito</h3>
+          <div class="plan-price">R$ 0<span>/mês</span></div>
+        </div>
+        <ul class="plan-features">
+          <li>✅ Registro ilimitado de dores</li>
+          <li>✅ Gráficos básicos</li>
+          <li>✅ IA para dúvidas gerais</li>
+          <li>✅ Lembretes de medicação</li>
+          <li>✅ Dicas de autocuidado</li>
+        </ul>
+        <button class="plan-btn current-plan" disabled>Plano Atual</button>
+      </div>
+      
+      <div class="plan-card premium-plan popular">
+        <div class="popular-badge">Mais Popular</div>
+        <div class="plan-header">
+          <h3>Premium</h3>
+          <div class="plan-price">R$ 29,90<span>/mês</span></div>
+        </div>
+        <ul class="plan-features">
+          <li>✅ Tudo do plano gratuito</li>
+          <li>⭐ Consultas online com especialistas</li>
+          <li>⭐ Relatórios avançados personalizados</li>
+          <li>⭐ IA especializada premium</li>
+          <li>⭐ Comunidade exclusiva</li>
+          <li>⭐ Suporte prioritário</li>
+        </ul>
+        <button onclick="assinarPlano('premium')" class="plan-btn premium-btn">Assinar Premium</button>
+      </div>
+      
+      <div class="plan-card professional-plan">
+        <div class="plan-header">
+          <h3>Profissional</h3>
+          <div class="plan-price">R$ 49,90<span>/mês</span></div>
+        </div>
+        <ul class="plan-features">
+          <li>✅ Tudo do plano Premium</li>
+          <li>🏥 Consultas ilimitadas</li>
+          <li>🏥 Acesso a especialistas internacionais</li>
+          <li>🏥 Análises laboratoriais online</li>
+          <li>🏥 Plano de tratamento personalizado</li>
+          <li>🏥 Acompanhamento 24/7</li>
+        </ul>
+        <button onclick="assinarPlano('professional')" class="plan-btn professional-btn">Assinar Profissional</button>
+      </div>
+    </div>
+    
+    <!-- Espaço para anúncio -->
+    <div class="ad-space ad-plans">
+      <p class="ad-label">Parceiros</p>
+      <div class="ad-content">
+        <h4>Laboratório Exames Plus</h4>
+        <p>20% de desconto em exames para usuárias Premium</p>
+        <button class="ad-btn">Agendar exame</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main hidden" id="faq">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <h3>Endometriose tem cura?</h3>
+        <p>Não tem cura, mas pode ser controlada com tratamento médico adequado e acompanhamento especializado.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>É possível engravidar com endometriose?</h3>
+        <p>Sim, embora possa ser mais desafiador. Existem tratamentos específicos para ajudar na fertilidade.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Quais são os sintomas mais comuns?</h3>
+        <p>Cólica intensa, dor pélvica, dor na relação sexual, alterações intestinais e fadiga extrema.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Como funciona o plano Premium?</h3>
+        <p>O plano Premium oferece acesso a consultas online, relatórios avançados e uma comunidade exclusiva de apoio.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3>Posso cancelar minha assinatura a qualquer momento?</h3>
+        <p>Sim, você pode cancelar sua assinatura a qualquer momento sem taxas adicionais.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="open-chat-btn" onclick="toggleChat()">💬</button>
+  <div class="chat-window" id="chatBox">
+    <div class="chat-header">
+      <span>Endo IA</span>
+      <span class="chat-status" id="chatStatus">Gratuita</span>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Digite sua dúvida...">
+      <button onclick="enviarMensagem()">⮞</button>
+    </div>
+  </div>
+
+  <footer class="modern-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>EndoTrack</h3>
+        <p>Cuidando da sua jornada com empatia e tecnologia</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contato</h4>
+        <p>📧 <a href="mailto:contato@endotrack.com">contato@endotrack.com</a></p>
+        <p>📱 0800-ENDO-HELP</p>
+      </div>
+      <div class="footer-section">
+        <h4>Suporte</h4>
+        <p>Segunda à Sexta: 8h às 18h</p>
+        <p>Sábado: 9h às 13h</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 EndoTrack — Todos os direitos reservados. | <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
