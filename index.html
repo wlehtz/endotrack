@@ -644,6 +644,25 @@
     </div>
   </footer>
 
+  <!-- Pop-up de entrega do trabalho acadêmico -->
+  <dialog class="entrega-modal" id="entregaModal" aria-labelledby="entregaTitulo">
+    <p class="entrega-tag">🎓 Trabalho acadêmico</p>
+    <h2 id="entregaTitulo">Entrega de trabalho da faculdade</h2>
+    <p>O EndoTrack foi desenvolvido como trabalho de uma disciplina da faculdade. Os planos, preços, anúncios e contatos são fictícios.</p>
+    <h3>Integrantes</h3>
+    <ul class="entrega-integrantes">
+      <li><span>Letícia Fantucci Medina</span><span>RA 47592974</span></li>
+      <li><span>Gustavo Figueiredo Soares</span><span>RA 46834796</span></li>
+      <li><span>Mateus Alves Gouveia</span><span>RA 45742561</span></li>
+    </ul>
+    <form method="dialog">
+      <button class="entrega-btn" autofocus>Acessar o site</button>
+    </form>
+  </dialog>
+
+  <script>
+    document.getElementById('entregaModal').showModal();
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -32,6 +32,15 @@ Não há build nem dependências — é só abrir o `index.html` no navegador.
 - HTML5, CSS3 e JavaScript
 - [Chart.js](https://www.chartjs.org/) para os gráficos de evolução
 
-## Projeto de portfólio
+## Trabalho acadêmico
 
-Feito por Letícia Fantucci Medina, com apoio de IA (Replit) no desenvolvimento.
+Este projeto foi desenvolvido e entregue como trabalho de uma disciplina da
+faculdade, com apoio de IA (Replit) no desenvolvimento.
+
+### Integrantes
+
+| Nome                      | RA       |
+| ------------------------- | -------- |
+| Letícia Fantucci Medina   | 47592974 |
+| Gustavo Figueiredo Soares | 46834796 |
+| Mateus Alves Gouveia      | 45742561 |
